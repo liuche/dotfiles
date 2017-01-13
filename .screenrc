@@ -1,0 +1,5 @@
+startup_message off
+
+# always show the windows list in the last line
+hardstatus alwayslastline "%w" 
+#defscrollback 10000000

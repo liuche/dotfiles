@@ -1,0 +1,98 @@
+[extensions]
+color = 
+pager = 
+purge = 
+histedit = 
+progress = 
+record = 
+strip = 
+mq = 
+reviewboard = ~/.mozbuild/version-control-tools/hgext/reviewboard/client.py
+push-to-try = ~/.mozbuild/version-control-tools/hgext/push-to-try
+firefoxtree = ~/.mozbuild/version-control-tools/hgext/firefoxtree
+rebase = 
+blackbox = 
+fsmonitor = 
+
+[paths]
+review = ssh://reviewboard-hg.mozilla.org/autoreview
+
+[color]
+mode = terminfo
+
+#Custom colours
+color.orange = 202
+color.lightyellow = 191
+color.darkorange = 220
+color.brightyellow = 226
+
+#Colours for each label
+log.branch = cyan
+log.summary = lightyellow
+log.description = lightyellow
+log.bookmark = green
+log.tag = darkorange
+log.graph = blue
+
+changeset.public = orange bold
+changeset.secret = blue bold
+changeset.draft = brightyellow bold
+
+desc.here = bold blue_background
+wip.bookmarks = yellow underline
+wip.branch = yellow
+wip.draft = green
+wip.here = red
+wip.obsolete = none
+wip.public = blue
+wip.tags = yellow
+wip.user = magenta
+
+[revsetalias]
+wip = (parents(not public()) or not public() or . or (head() and branch(default))) and (not obsolete() or unstable()^) and not closed() and not (fxheads() - date(-90))
+
+[templates]
+wip = '{label("wip.branch", if(branches,"{branches} "))}{label(ifeq(graphnode,"x","wip.obsolete","wip.{phase}"),"{rev}:{node|short}")}{label("wip.user", " {author|user}")}{label("wip.tags", if(tags," {tags}"))}{label("wip.tags", if(fxheads," {fxheads}"))}{if(bookmarks," ")}{label("wip.bookmarks", if(bookmarks,bookmarks))}{label(ifcontains(rev, revset("parents()"), "wip.here"), " {desc|firstline}")}'
+
+[alias]
+wip = log --graph --rev=wip --template=wip
+tree = log --graph -r "draft()~2..draft()"
+
+[ui]
+username = Chenxia Liu <liuche@mozilla.com>
+merge = internal:merge
+interface = curses
+
+[defaults]
+qseries = -sv
+qnew = -Ue
+update = --check
+
+[diff]
+git = 1
+unified = 8
+showfunc = true
+
+[pager]
+pager = LESS=FRSXQ less
+attend = help,diff
+quiet = True
+attend-help = true
+attend-incoming = true
+attend-outgoing = true
+attend-status = true
+attend-wip = true
+
+[mozilla]
+ircnick = liuche
+
+[bugzilla]
+username = liuche@mozilla.com
+apikey = # APIKEY
+[experimental]
+clonebundles = true
+graphshorten = true
+[hostsecurity]
+bitbucket.org:fingerprints = sha256:4e:65:3e:76:0f:81:59:85:5b:50:06:0c:c2:4d:3c:56:53:8b:83:3e:9b:fa:55:26:98:9a:ca:e2:25:03:92:47
+bugzilla.mozilla.org:fingerprints = sha256:10:95:a8:c1:e1:c3:18:fa:e4:95:40:99:11:07:6d:e3:79:ab:e5:b0:29:50:ff:40:e8:e8:63:c4:fd:f3:9f:cb
+hg.mozilla.org:fingerprints = sha256:8e:ad:f7:6a:eb:44:06:15:ed:f3:e4:69:a6:64:60:37:2d:ff:98:88:37:bf:d7:b8:40:84:01:48:9c:26:ce:d9
