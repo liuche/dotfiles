@@ -1,0 +1,48 @@
+[user]
+	email = liuche@mozilla.com
+	name = Chenxia Liu
+	editor = vim
+
+[alias]
+	ci = commit
+	st = status
+	patch = add -p
+	co = checkout
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+	lgd = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -p
+  hgp = "show --binary --format=\"# HG changeset patch%n# User %an <%ae>%n%B\" -U8"
+
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+  ui = true
+  pager = true
+
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+
+[apply]
+  whitespace = fix
+[core]
+	excludesfile = /Users/liuche/.gitignore_global
+  ignorecase = false
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[push]
+	default = nothing
