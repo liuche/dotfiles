@@ -11,8 +11,7 @@ alias sz="source ~/.zshrc"
 alias hb="hg bookmark"
 alias hu="hg up"
 alias hp="hg pull"
-alias hpa="hg pull aurora -r tip"
-alias hpb="hg pull beta -r tip"
+alias hpu="hg pull -u"
 alias hw="hg wip"
 alias htr="hg tree"
 alias hd="hg diff"
@@ -21,13 +20,14 @@ alias hc="hg commit"
 alias hca="hg commit --amend"
 alias hh="hg histedit"
 alias hhc="hh --continue"
-alias hpt='hg push-to-try -m "try: -b o -f -p android-x86,android-api-9 -u all -t none"'
-
+alias hpr="hg push review -r"
 
 # git
 alias gb="git branch"
 alias gba="git branch -a"
 alias gc="git commit -a"
+alias grc="git rebase --continue"
+alias gri="git rebase -i"
 alias gd="git diff"
 alias gp="git pull"
 alias gpush="git push"
@@ -37,13 +37,15 @@ alias gl="git log"
 alias glg="git lg"
 alias glgd="git lgd"
 alias gdiff="git diff"
-
-# heroku
-alias hr="heroku"
+alias gpum="gp upstream master"
+alias gpom="gpush origin master"
+function gpr {
+  git fetch upstream pull/$1/head:pr$1 && git checkout pr$1
+}
 
 # irc
-alias irc="ssh-add ~/.ssh/moz_rsa; ssh -t pp screen -raAd irc"
-alias issh="ssh-add ~/.ssh/moz_rsa; ssh -L 6667:localhost:3687 pp"
+alias irc="ssh -t pp screen -raAd irc"
+alias issh="ssh -L 6667:localhost:3687 pp"
 
 # Mozilla building aliases
 alias instlin="adb install -r /Users/liuche/Documents/Virtual\ Machines.localized/shared-folder/fennec.apk"
@@ -53,12 +55,19 @@ alias mb="mach build"
 alias mp="mach package"
 alias mi="mach install"
 alias ma="mb mobile/android"
-alias mg="mach gradle build"
-alias mm="ma&& mp&& mi"
-alias mbm="mb mobile/android/base&& mp&& mi"
-alias mcb="mc&& mb&& mach artifact install&& mp&& mg"
+alias mg="mach gradle assembleLocalPhotonDebug"
+alias mcb="mc&& mb&& mp&& mg"
 alias mr="mach robocop"
 alias unin="adb uninstall org.mozilla.fennec_liuche"
 alias inst="adb uninstall org.mozilla.fennec_liuche&& mach install"
 
+# Focus Android
+alias grl="./gradlew assemble test lint pmd checkstyle findbugs" # gradle check
 
+alias bu="./gradlew assembleAmazonWebviewRelease"
+alias sr="apksigner sign --ks ../debug-signing-keys/debug-signing-keys.jks app/build/outputs/apk/amazonWebview/release/app-amazonWebview-release-unsigned.apk"
+alias inst="adb install -r app/build/outputs/apk/amazonWebview/release/app-amazonWebview-release-unsigned.apk"
+alias stfc="adb shell am start -a android.intent.action.LAUNCH -n org.mozilla.connect.firefox/org.mozilla.focus.MainActivity"
+alias adbss="adb shell screencap -p /sdcard/screenshot.png"
+alias adbps="adb pull /sdcard/screenshot.png"
+alias rui="./gradlew connectedAndroidTest"

@@ -1,21 +1,18 @@
 [extensions]
-color = 
-pager = 
 purge = 
 histedit = 
 progress = 
 record = 
 strip = 
 mq = 
-reviewboard = ~/.mozbuild/version-control-tools/hgext/reviewboard/client.py
 push-to-try = ~/.mozbuild/version-control-tools/hgext/push-to-try
-firefoxtree = ~/.mozbuild/version-control-tools/hgext/firefoxtree
 rebase = 
 blackbox = 
 fsmonitor = 
 
 [paths]
 review = ssh://reviewboard-hg.mozilla.org/autoreview
+try = ssh://hg.mozilla.org/try
 
 [color]
 mode = terminfo
@@ -74,21 +71,15 @@ unified = 8
 showfunc = true
 
 [pager]
-pager = LESS=FRSXQ less
-attend = help,diff
-quiet = True
-attend-help = true
-attend-incoming = true
-attend-outgoing = true
-attend-status = true
-attend-wip = true
+pager = LESS=FrSXQ less
 
 [mozilla]
 ircnick = liuche
 
 [bugzilla]
 username = liuche@mozilla.com
-apikey = # APIKEY
+apikey = TaYC3uQHOIy0qYtICj51YLbVTnTeZE9Vf6rlZV2P
+
 [experimental]
 clonebundles = true
 graphshorten = true

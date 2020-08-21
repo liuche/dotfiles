@@ -26,10 +26,10 @@
   remote = green
 
 [color "diff"]
-  meta = yellow bold
-  frag = magenta bold
+  meta = yellow
+  frag = magenta
   old = red bold
-  new = green bold
+  new = green
 
 [color "status"]
   added = yellow
@@ -39,7 +39,7 @@
 [apply]
   whitespace = fix
 [core]
-	excludesfile = /Users/liuche/.gitignore_global
+	excludesfile = /Users/liuche/.gitignore
   ignorecase = false
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
